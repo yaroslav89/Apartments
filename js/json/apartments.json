@@ -1,0 +1,66 @@
+{	
+	"apartments": [
+		{
+			"id":1,
+			"image":"js/json/img/1.jpg",
+			"text": "Luxury apartment",
+			"price":"Free"
+		},
+		{
+
+			"id":2,
+			"image":"js/json/img/2.jpg",
+			"text": "Luxury apartment",
+			"price":"Free"
+		},
+		{
+
+			"id":3,
+			"image":"js/json/img/3.jpg",
+			"text": "Luxury apartment",
+			"price":"Free"
+		},
+		{
+
+			"id":4,
+			"image":"js/json/img/4.jpg",
+			"text": "Luxury apartment",
+			"price":"Free"
+		},
+		{
+
+			"id":5,
+			"image":"js/json/img/5.jpg",
+			"text": "Luxury apartment",
+			"price":"Free"
+		},
+		{
+
+			"id":6,
+			"image":"js/json/img/6.jpg",
+			"text": "Luxury apartment",
+			"price":"Free"
+		},
+		{
+
+			"id":7,
+			"image":"js/json/img/7.jpg",
+			"text": "Luxury apartment",
+			"price":"Free"
+		},
+		{
+
+			"id":8,
+			"image":"js/json/img/8.jpg",
+			"text": "Luxury apartment",
+			"price":"Free"
+		},
+		{
+			"id":9,
+			"image":"js/json/img/9.jpg",
+			"text": "Luxury apartment",
+			"price":"Free"
+		}
+	]
+	
+}

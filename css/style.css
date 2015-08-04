@@ -1,0 +1,21 @@
+.form-group {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.btn-success,
+.btn-info,
+.btn-primary,
+.btn-danger,
+.btn-warning {
+    border: none;
+}
+
+.userName {
+    font: 16pt Arial;
+    font-style: oblique;
+}
+
+a, a:hover {
+	text-decoration: none;
+}

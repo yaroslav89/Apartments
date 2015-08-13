@@ -27,7 +27,6 @@ function displayApartments() {
         $.each(data.apartments, function(i, apartment) {
             output.append("<div class=col-md-4 col-lg-4><img src=" + apartment.image + " width=300 height=200><h4>" + apartment.text + "</h4><input class=id type=radio name=radio value=" + apartment.id + "><p>Price:" + apartment.price + "</p>");
         });
-
     });
 }
 //add apartments to favourites

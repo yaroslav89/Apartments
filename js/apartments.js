@@ -34,7 +34,7 @@ function addtoFavourites() {
     var index = $(".id:checked").val();
     if (index !== undefined) {
         //checking if apartments array already exists
-        if (localStorage.array == undefined) {
+        if (!localStorage.array) {
             $.getJSON("js/json/apartments.json", function(data) {
                 $.each(data, function(i, apartment) {
                     favObject = apartment[index - 1];

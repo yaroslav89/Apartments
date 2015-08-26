@@ -22,22 +22,21 @@ var Apartment = function(jsonurl) {
     this.url = jsonurl;
 }
 
-Apartment.prototype.show = function(){
+Apartment.prototype.show = function() {
     var output = $(".list");
-    $.getJSON(this.url, function(data){
-        $.each(data.apartments, function(i,apartment){
-            output.append("<div class=col-md-4 col-lg-4><img src=" + apartment.image + " width=300 height=200><h4>" + apartment.text + "</h4><input class=id type=radio name=radio value=" + apartment.id + "><p>Price:" + apartment.price + "</p>");    
+    $.getJSON(this.url, function(data) {
+        $.each(data.apartments, function(i, apartment) {
+            output.append("<div class=col-md-4 col-lg-4><img src=" + apartment.image + " width=300 height=200><h4>" + apartment.text + "</h4><input class=id type=radio name=radio value=" + apartment.id + "><p>Price:" + apartment.price + "</p>");
         });
     });
 }
 
-Apartment.prototype.addFavourite = function(){
+Apartment.prototype.addFavourite = function() {
     var index = $(".id:checked").val();
     var favObject;
     var array = [];
     if (index !== undefined) {
-        //checking if apartments array already exists
-        if (!localStorage.array) {
+        if (localStorage.array == undefined) {
             $.getJSON(this.url, function(data) {
                 $.each(data, function(i, apartment) {
                     favObject = apartment[index - 1];
@@ -45,25 +44,40 @@ Apartment.prototype.addFavourite = function(){
                     localStorage.array = JSON.stringify(array);
                 });
             });
-        } else {
-            $.getJSON(this.url, function(data) {
-                $.each(data, function(i, apartment) {
-                    favObject = (apartment[index - 1]);
-                    array = JSON.parse(localStorage.array);
-                    array.push(favObject);
-                    localStorage.array = JSON.stringify(array);
+        } 
+        else {
+            if (this.storage().indexOf(Number(index)) >= 0) {
+                alert("Apartment already exist in favourites");
+            } 
+            else {
+                $.getJSON(this.url, function(data) {
+                    $.each(data, function(i, apartment) {
+                        favObject = (apartment[index - 1]);
+                        array = JSON.parse(localStorage.array);
+                        array.push(favObject);
+                        localStorage.array = JSON.stringify(array);
+                    });
                 });
-            });
+            }
         }
-        console.log(localStorage.array);
-        alert("Apartment added successfully")
     } else {
         alert("please choose apartment");
     }
 }
 
-Apartment.prototype.showFavourite = function(){
-     var outputF = $(".list2");
+Apartment.prototype.storage = function() {
+    var array2 = [];
+    if (localStorage.array !== undefined) {
+        var local = JSON.parse(localStorage.array);
+        for (var i = 0; i < local.length; i++) {
+            array2.push(local[i].id);
+        }
+        return array2;
+    }
+}
+
+Apartment.prototype.showFavourite = function() {
+    var outputF = $(".list2");
     if (localStorage.array !== undefined) {
         var item = JSON.parse(localStorage.array);
         $.each(item, function(i, object) {

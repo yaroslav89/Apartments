@@ -7,10 +7,10 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="js/jquery-1.11.3.min.js"></script>
-    <script src="js/apartments.js"></script>
+    <script src="js/objectapartments.js"></script>
 </head>
 
-<body onload="displayApartments()">
+<body onload="apartment.show()">
     <div class="container-fluid">
         <h1>Apartments List</h1>
         <div class="panel">
@@ -20,7 +20,7 @@
             <a href="index.html">
                 <input type="submit" class="btn-danger" value="Log Out">
             </a>
-            <button onclick="addtoFavourites()" class="btn-success add">Add to favourites</button>
+            <button onclick="apartment.addFavourite()" class="btn-success add">Add to favourites</button>
         </div>
         <div class="row list">
         </div>

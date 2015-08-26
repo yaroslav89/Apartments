@@ -18,24 +18,27 @@ $(document).ready(function() {
     });
 });
 
-var array = [];
-var favObject;
-// get apartments from json
-function displayApartments() {
+var Apartment = function(jsonurl) {
+    this.url = jsonurl;
+}
+
+Apartment.prototype.show = function(){
     var output = $(".list");
-    $.getJSON("js/json/apartments.json", function(data) {
-        $.each(data.apartments, function(i, apartment) {
-            output.append("<div class=col-md-4 col-lg-4><img src=" + apartment.image + " width=300 height=200><h4>" + apartment.text + "</h4><input class=id type=radio name=radio value=" + apartment.id + "><p>Price:" + apartment.price + "</p>");
+    $.getJSON(this.url, function(data){
+        $.each(data.apartments, function(i,apartment){
+            output.append("<div class=col-md-4 col-lg-4><img src=" + apartment.image + " width=300 height=200><h4>" + apartment.text + "</h4><input class=id type=radio name=radio value=" + apartment.id + "><p>Price:" + apartment.price + "</p>");    
         });
     });
 }
-//add apartments to favourites
-function addtoFavourites() {
+
+Apartment.prototype.addFavourite = function(){
     var index = $(".id:checked").val();
+    var favObject;
+    var array = [];
     if (index !== undefined) {
         //checking if apartments array already exists
         if (!localStorage.array) {
-            $.getJSON("js/json/apartments.json", function(data) {
+            $.getJSON(this.url, function(data) {
                 $.each(data, function(i, apartment) {
                     favObject = apartment[index - 1];
                     array.push(favObject);
@@ -43,7 +46,7 @@ function addtoFavourites() {
                 });
             });
         } else {
-            $.getJSON("js/json/apartments.json", function(data) {
+            $.getJSON(this.url, function(data) {
                 $.each(data, function(i, apartment) {
                     favObject = (apartment[index - 1]);
                     array = JSON.parse(localStorage.array);
@@ -52,14 +55,15 @@ function addtoFavourites() {
                 });
             });
         }
+        console.log(localStorage.array);
         alert("Apartment added successfully")
     } else {
         alert("please choose apartment");
     }
 }
 
-function displayFavourites() {
-    var outputF = $(".list2");
+Apartment.prototype.showFavourite = function(){
+     var outputF = $(".list2");
     if (localStorage.array !== undefined) {
         var item = JSON.parse(localStorage.array);
         $.each(item, function(i, object) {
@@ -69,3 +73,5 @@ function displayFavourites() {
         outputF.html("<h4>No Favourites</h4>");
     }
 }
+
+var apartment = new Apartment("js/json/apartments.json");

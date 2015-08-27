@@ -9,8 +9,17 @@
 .btn-danger,
 .btn-warning {
     border: none;
+    outline: none;
 }
 
+.id {
+	border: none;
+	background: transparent;
+	outline: none;
+}
+.id:after {
+	content: url(icon/fav.png);
+}
 .userName {
     font: 16pt Arial;
     font-style: oblique;

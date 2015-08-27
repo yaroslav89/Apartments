@@ -18,7 +18,7 @@ $(document).ready(function() {
     });
 });
 
-var Apartment = function(jsonurl) {
+function Apartment(jsonurl) {
     this.url = jsonurl;
 }
 
@@ -26,13 +26,13 @@ Apartment.prototype.show = function() {
     var output = $(".list");
     $.getJSON(this.url, function(data) {
         $.each(data.apartments, function(i, apartment) {
-            output.append("<div class=col-md-4 col-lg-4><img src=" + apartment.image + " width=300 height=200><h4>" + apartment.text + "</h4><input class=id type=radio name=radio value=" + apartment.id + "><p>Price:" + apartment.price + "</p>");
+            output.append("<div class=col-md-4 col-lg-4 current><img src=" + apartment.image + " width=300 height=200><h4>" + apartment.text + "</h4><button class=id onclick=apartment.addFavourite("+apartment.id+")></button><p>Price:" + apartment.price + "</p>");
         });
     });
 }
 
-Apartment.prototype.addFavourite = function() {
-    var index = $(".id:checked").val();
+Apartment.prototype.addFavourite = function(id_val) {
+    var index = id_val;
     var favObject;
     var array = [];
     if (index !== undefined) {

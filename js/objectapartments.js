@@ -44,6 +44,7 @@ Apartment.prototype.addFavourite = function() {
                     localStorage.array = JSON.stringify(array);
                 });
             });
+            alert("Apartment added");
         } 
         else {
             if (this.storage().indexOf(Number(index)) >= 0) {
@@ -58,6 +59,7 @@ Apartment.prototype.addFavourite = function() {
                         localStorage.array = JSON.stringify(array);
                     });
                 });
+                alert("Apartment added");
             }
         }
     } else {

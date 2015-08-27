@@ -17,11 +17,11 @@ $(document).ready(function() {
         localStorage.clear();
     });
 });
-
+/*-----------------------------------Creat Class Apartment------------------------------*/
 function Apartment(jsonurl) {
     this.url = jsonurl;
 }
-
+/*-----------------------------------function to display apartmnets from json file---------------*/
 Apartment.prototype.show = function() {
     var output = $(".list");
     $.getJSON(this.url, function(data) {
@@ -30,13 +30,13 @@ Apartment.prototype.show = function() {
         });
     });
 }
-
+/*----------------------------------function add apartmtents to favourites------------------------*/
 Apartment.prototype.addFavourite = function(id_val) {
     var index = id_val;
     var favObject;
     var array = [];
-    if (index !== undefined) {
-        if (localStorage.array == undefined) {
+    /*-------------Check if Local Storage array exist---------*/
+        if (localStorage.array == undefined) {  
             $.getJSON(this.url, function(data) {
                 $.each(data, function(i, apartment) {
                     favObject = apartment[index - 1];
@@ -47,10 +47,12 @@ Apartment.prototype.addFavourite = function(id_val) {
             alert("Apartment added");
         } 
         else {
-            if (this.storage().indexOf(Number(index)) >= 0) {
+            /*----Check if apartment already exist in favourites--*/
+            if (this.storage().indexOf(Number(index)) >= 0) { 
                 alert("Apartment already exist in favourites");
             } 
             else {
+                /*-------If local storage array exist, get this array and put new apartment-----*/
                 $.getJSON(this.url, function(data) {
                     $.each(data, function(i, apartment) {
                         favObject = (apartment[index - 1]);
@@ -62,11 +64,8 @@ Apartment.prototype.addFavourite = function(id_val) {
                 alert("Apartment added");
             }
         }
-    } else {
-        alert("please choose apartment");
-    }
 }
-
+/*------------------Get Indexes of local storage array if this array exists-----------*/
 Apartment.prototype.storage = function() {
     var array2 = [];
     if (localStorage.array !== undefined) {
@@ -77,7 +76,7 @@ Apartment.prototype.storage = function() {
         return array2;
     }
 }
-
+/*-------------------------Show favourite apartments---------------------------*/
 Apartment.prototype.showFavourite = function() {
     var outputF = $(".list2");
     if (localStorage.array !== undefined) {
@@ -89,5 +88,5 @@ Apartment.prototype.showFavourite = function() {
         outputF.html("<p class=info>No Favourites</p>");
     }
 }
-
+/*----------------------Creating apartment object---------------------*/
 var apartment = new Apartment("js/json/apartments.json");

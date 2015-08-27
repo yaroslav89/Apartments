@@ -12,14 +12,22 @@
     outline: none;
 }
 
+.info {
+	width: 50%;
+	margin-left: 2%;
+	font-size: 20pt;
+}
+
 .id {
 	border: none;
 	background: transparent;
 	outline: none;
 }
-.id:after {
+.id:before {
 	content: url(icon/fav.png);
+	float: left;
 }
+
 .userName {
     font: 16pt Arial;
     font-style: oblique;

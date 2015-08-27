@@ -26,7 +26,7 @@ Apartment.prototype.show = function() {
     var output = $(".list");
     $.getJSON(this.url, function(data) {
         $.each(data.apartments, function(i, apartment) {
-            output.append("<div class=col-md-4 col-lg-4 current><img src=" + apartment.image + " width=300 height=200><h4>" + apartment.text + "</h4><button class=id onclick=apartment.addFavourite("+apartment.id+")></button><p>Price:" + apartment.price + "</p>");
+            output.append("<div class=col-md-4 col-lg-4 col-xs-4><img src=" + apartment.image + " width=300 height=200><h4>" + apartment.text + "</h4><button class=id onclick=apartment.addFavourite("+apartment.id+")>Add to favourites</button><p>Price:" + apartment.price + "</p>");
         });
     });
 }
@@ -86,7 +86,7 @@ Apartment.prototype.showFavourite = function() {
             outputF.append("<div class=col-md-4 col-lg-4><img src=" + object.image + " width=300 height=200><h4>" + object.text + "</h4><p>Price:" + object.price + "</p>");
         });
     } else {
-        outputF.html("<h4>No Favourites</h4>");
+        outputF.html("<p class=info>No Favourites</p>");
     }
 }
 

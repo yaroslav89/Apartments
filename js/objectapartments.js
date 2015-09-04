@@ -26,7 +26,7 @@ Apartment.prototype.show = function() {
     var output = $(".list");
     $.getJSON(this.url, function(data) {
         $.each(data.apartments, function(i, apartment) {
-            output.append("<div class=col-md-4 col-lg-4 col-xs-4><img src=" + apartment.image + " width=300 height=200><h4>" + apartment.text + "</h4><button class=id onclick=apartment.addFavourite("+apartment.id+")>Add to favourites</button><p>Price:" + apartment.price + "</p>");
+            output.append("<div class=col-md-4 col-lg-4 col-xs-4><img src=" + apartment.image + " width=300 height=200><h4>" + apartment.name + "</h4><button class=add onclick=apartment.addFavourite("+apartment.id+")>Add to favourites</button><p><b>Price:</b>" + apartment.price + "</p>");
         });
     });
 }
@@ -81,8 +81,8 @@ Apartment.prototype.showFavourite = function() {
     var outputF = $(".list2");
     if (localStorage.array !== undefined) {
         var item = JSON.parse(localStorage.array);
-        $.each(item, function(i, object) {
-            outputF.append("<div class=col-md-4 col-lg-4><img src=" + object.image + " width=300 height=200><h4>" + object.text + "</h4><p>Price:" + object.price + "</p>");
+        $.each(item, function(i, apartment) {
+            outputF.append("<div class=col-md-4 col-lg-4><img src=" + apartment.image + " width=300 height=200><h4>" + apartment.name + "</h4><p>Price:" + apartment.price + "</p>");
         });
     } else {
         outputF.html("<p class=info>No Favourites</p>");
@@ -90,3 +90,5 @@ Apartment.prototype.showFavourite = function() {
 }
 /*----------------------Creating apartment object---------------------*/
 var apartment = new Apartment("js/json/apartments.json");
+
+

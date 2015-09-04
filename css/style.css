@@ -18,14 +18,18 @@
 	font-size: 20pt;
 }
 
-.id {
+.add {
 	border: none;
 	background: transparent;
 	outline: none;
 }
-.id:before {
+.add:before {
 	content: url(icon/fav.png);
 	float: left;
+}
+
+.add:hover {
+	color:#F50057;
 }
 
 .userName {
@@ -35,4 +39,7 @@
 
 a, a:hover {
 	text-decoration: none;
+}
+.form-group {
+	padding-bottom: 1%;
 }

@@ -35,9 +35,9 @@
 					$this->status = 0;
 					echo "<h1>File is not an image</h1>";
 				}
-				elseif ($file['size'] > 500000) {
+				elseif ($file['size'] > 600000) {
 					$this->status = 0;
-					echo "<h1>Image file is too big,image size must not more the 500kb</h1>";
+					echo "<h1>Image file is too big, image size must be not more the 600kb</h1>";
 				}
 				
 				else 
